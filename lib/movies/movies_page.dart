@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:themoviedb/movies/movies_detail_page.dart';
 import 'package:themoviedb/widgets/bottom_loader.dart';
 import 'package:themoviedb/widgets/loading_indicator.dart';
 import 'package:themoviedb/widgets/movie_list_item.dart';
@@ -36,7 +37,19 @@ class _MoviesPageState extends State<MoviesPage> {
               final movie = state.movies[index];
               return index >= state.movies.length
                   ? BottomLoader()
-                  : MovieListItem(movie: movie);
+                  : MovieListItem(
+                      movie: movie,
+                      onTapFunction: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MoviesDetailPage(
+                              movie: movie,
+                            ),
+                          ),
+                        );
+                      },
+                    );
             },
             itemCount: state.hasReachedMax
                 ? state.movies.length

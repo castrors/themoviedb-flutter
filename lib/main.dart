@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:themoviedb/commons/constants.dart';
 import 'package:themoviedb/movies/movies.dart';
 import 'package:themoviedb/movies/movies_page.dart';
 import 'package:themoviedb/repository/repository.dart';
@@ -51,7 +52,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('The Movie DB'),
+          title: Text(
+            'The Movie DB',
+            style: titleStyle,
+          ),
         ),
         body: MoviesPage(),
       ),
