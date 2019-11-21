@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:themoviedb/widgets/bottom_loader.dart';
 import 'package:themoviedb/widgets/loading_indicator.dart';
+import 'package:themoviedb/widgets/movie_list_item.dart';
 import 'movies.dart';
 
 class MoviesPage extends StatefulWidget {
@@ -30,16 +31,19 @@ class _MoviesPageState extends State<MoviesPage> {
     return BlocBuilder<MoviesBloc, MoviesState>(
       builder: (context, state) {
         if (state is MoviesFetched) {
-          return ListView.builder(
+          return GridView.builder(
             itemBuilder: (context, index) {
+              final movie = state.movies[index];
               return index >= state.movies.length
                   ? BottomLoader()
-                  : ListTile(title: Text(state.movies[index].title));
+                  : MovieListItem(movie: movie);
             },
             itemCount: state.hasReachedMax
                 ? state.movies.length
                 : state.movies.length + 1,
             controller: _scrollController,
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           );
         }
         if (state is MoviesEmpty) {
