@@ -16,6 +16,7 @@ class MovieListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      key: Key('${movie.id}'),
       onTap: onTapFunction,
       child: Stack(fit: StackFit.expand, children: <Widget>[
         MovieImage(movie),

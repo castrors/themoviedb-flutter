@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:themoviedb/commons/constants.dart';
 import 'package:themoviedb/movies/movies.dart';
 import 'package:themoviedb/movies/movies_page.dart';
 import 'package:themoviedb/repository/repository.dart';
-import 'package:themoviedb/widgets/bottom_loader.dart';
-import 'package:themoviedb/widgets/loading_indicator.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override

@@ -4,7 +4,8 @@ import 'package:mockito/mockito.dart';
 import 'package:themoviedb/movies/movies.dart';
 import 'package:themoviedb/repository/movies_repository.dart';
 
-import 'fake_movies.dart';
+import '../fake/fake_movies.dart';
+
 
 class MockMoviesRepository extends Mock implements MoviesRepository {}
 

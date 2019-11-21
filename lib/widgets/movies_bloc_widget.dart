@@ -29,9 +29,8 @@ class _MoviesBlocWidgetState extends State<MoviesBlocWidget> {
   void initState() {
     _moviesBloc = widget.moviesBloc;
     _scrollController.addListener(_onScroll);
-    super.initState();  
+    super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +66,16 @@ class _MoviesBlocWidgetState extends State<MoviesBlocWidget> {
           );
         }
         if (state is MoviesEmpty) {
-          return Text('Movies Empty');
+          return Text(
+            'Movies Empty',
+            key: Key('empty_state_label'),
+          );
         }
         if (state is MoviesError) {
-          return Text('Movies Error');
+          return Text(
+            'Movies Error',
+            key: Key('error_state_label'),
+          );
         }
         return LoadingIndicator();
       },
