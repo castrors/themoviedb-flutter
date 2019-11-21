@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:themoviedb/commons/constants.dart';
+import 'package:themoviedb/commons/custom_search_delegate.dart';
 import 'package:themoviedb/movies/movies_detail_page.dart';
 import 'package:themoviedb/widgets/bottom_loader.dart';
 import 'package:themoviedb/widgets/loading_indicator.dart';
 import 'package:themoviedb/widgets/movie_list_item.dart';
+import 'package:themoviedb/widgets/movies_bloc_widget.dart';
 import 'movies.dart';
 
 class MoviesPage extends StatefulWidget {
@@ -29,44 +32,25 @@ class _MoviesPageState extends State<MoviesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MoviesBloc, MoviesState>(
-      builder: (context, state) {
-        if (state is MoviesFetched) {
-          return GridView.builder(
-            itemBuilder: (context, index) {
-              final movie = state.movies[index];
-              return index >= state.movies.length
-                  ? BottomLoader()
-                  : MovieListItem(
-                      movie: movie,
-                      onTapFunction: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MoviesDetailPage(
-                              movie: movie,
-                            ),
-                          ),
-                        );
-                      },
-                    );
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'The Movie DB',
+          style: titleStyle,
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(scrollController: _scrollController),
+              );
             },
-            itemCount: state.hasReachedMax
-                ? state.movies.length
-                : state.movies.length + 1,
-            controller: _scrollController,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          );
-        }
-        if (state is MoviesEmpty) {
-          return Text('Movies Empty');
-        }
-        if (state is MoviesError) {
-          return Text('Movies Error');
-        }
-        return LoadingIndicator();
-      },
+          )
+        ],
+      ),
+      body: MoviesBlocWidget(scrollController: _scrollController),
     );
   }
 
@@ -78,3 +62,5 @@ class _MoviesPageState extends State<MoviesPage> {
     }
   }
 }
+
+

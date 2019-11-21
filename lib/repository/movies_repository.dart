@@ -11,4 +11,8 @@ class MoviesRepository {
   Future<List<Movie>> fetchMovies(int page) async {
     return await moviesApiClient.fetchMovies(page);
   }
+
+  Future<List<Movie>> searchMovies(String query, int page) async {
+    return await moviesApiClient.searchMovies(query, page);
+  }
 }

@@ -9,8 +9,17 @@ class MoviesApiClient {
   static String upcomingMoviesURL =
       '$baseURL/movie/upcoming?api_key=$apiKey&$defaultConfiguration';
 
+  static String searchMoviesURL =
+      '$baseURL/search/movie?api_key=$apiKey&$defaultConfiguration';
+
   Future<List<Movie>> fetchMovies(int page) async {
-    Response response = await Dio().get(upcomingMoviesURL+'&page=$page');
+    Response response = await Dio().get(upcomingMoviesURL + '&page=$page');
+    return RequestResponse.fromJson(response.data).results;
+  }
+
+  Future<List<Movie>> searchMovies(String query, int page) async {
+    Response response =
+        await Dio().get(searchMoviesURL + '&page=$page&query=$query');
     return RequestResponse.fromJson(response.data).results;
   }
 }
