@@ -6,17 +6,32 @@ import 'package:themoviedb/widgets/bottom_loader.dart';
 import 'package:themoviedb/widgets/loading_indicator.dart';
 import 'package:themoviedb/widgets/movie_list_item.dart';
 
-class MoviesBlocWidget extends StatelessWidget {
+class MoviesBlocWidget extends StatefulWidget {
   const MoviesBlocWidget({
     Key key,
-    ScrollController scrollController,
     MoviesBloc bloc,
-  })  : _scrollController = scrollController,
-        _moviesBloc = bloc,
+  })  : moviesBloc = bloc,
         super(key: key);
 
-  final ScrollController _scrollController;
-  final MoviesBloc _moviesBloc;
+  final MoviesBloc moviesBloc;
+
+  @override
+  _MoviesBlocWidgetState createState() => _MoviesBlocWidgetState();
+}
+
+class _MoviesBlocWidgetState extends State<MoviesBlocWidget> {
+  final _scrollController = ScrollController();
+  final _scrollThreshold = 200.0;
+
+  MoviesBloc _moviesBloc;
+
+  @override
+  void initState() {
+    _moviesBloc = widget.moviesBloc;
+    _scrollController.addListener(_onScroll);
+    super.initState();  
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,5 +75,13 @@ class MoviesBlocWidget extends StatelessWidget {
         return LoadingIndicator();
       },
     );
+  }
+
+  void _onScroll() {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    if (maxScroll - currentScroll <= _scrollThreshold) {
+      _moviesBloc.add(Fetch());
+    }
   }
 }

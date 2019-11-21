@@ -5,12 +5,7 @@ import 'package:themoviedb/movies/movies.dart';
 import 'package:themoviedb/widgets/movies_bloc_widget.dart';
 
 class CustomSearchDelegate extends SearchDelegate<Movie> {
-  CustomSearchDelegate({
-    this.scrollController,
-  });
-
-  final ScrollController scrollController;
-
+  
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -52,7 +47,6 @@ class CustomSearchDelegate extends SearchDelegate<Movie> {
         BlocProvider.of<MoviesBloc>(context).moviesRepository;
   
     return MoviesBlocWidget(
-      scrollController: scrollController,
       bloc: MoviesBloc(moviesRepository: moviesRepository)..add(Search(query: query)),
     );
   }
