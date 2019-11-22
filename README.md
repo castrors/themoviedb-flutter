@@ -23,3 +23,11 @@ A Flutter project that consumes The Movie Database (TMDb) https://developers.the
     - http client to handle with the requests
 - Mockito
     - Mocking framework for unit tests
+
+## Screenshots
+
+![list|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/list.png)
+![detail|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/detail.png)
+![searchsuccess|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/searchsuccess.png)
+![searcherror|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/searcherror.png)
+![searchdetail|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/searchdetail.png)
