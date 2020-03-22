@@ -31,7 +31,7 @@ void main() {
   runApp(
     BlocProvider<MoviesBloc>(
       builder: (context) {
-        return MoviesBloc(moviesRepository: moviesRepository)..add(Fetch());
+        return MoviesBloc(moviesRepository: moviesRepository);
       },
       child: App(moviesRepository: moviesRepository),
     ),
