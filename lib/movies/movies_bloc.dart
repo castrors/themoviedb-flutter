@@ -19,7 +19,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   ) async* {
     final currentState = state;
     if (event is Fetch) {
-      // yield MoviesLoading();
       try {
         if (currentState is MoviesUnitialized) {
           final movies = await moviesRepository.fetchMovies(1);

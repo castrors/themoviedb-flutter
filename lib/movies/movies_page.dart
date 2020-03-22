@@ -5,6 +5,7 @@ import 'package:themoviedb/commons/custom_search_delegate.dart';
 import 'package:themoviedb/widgets/movies_bloc_widget.dart';
 
 import 'movies.dart';
+import 'movies_event.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({

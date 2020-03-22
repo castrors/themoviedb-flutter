@@ -2,10 +2,9 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:themoviedb/movies/movies_bloc.dart';
-import 'package:themoviedb/movies/movies_event.dart';
-import 'package:themoviedb/movies/movies_state.dart';
+import 'package:themoviedb/movies/movies.dart';
 
+import '../../lib/commons/constants.dart';
 import '../../lib/widgets/movies_bloc_widget.dart';
 import '../fake/fake_movies.dart';
 
@@ -50,7 +49,7 @@ void main() {
         ),
       );
 
-      expect(find.byKey(Key('empty_state_label')), findsOneWidget);
+      expect(find.byKey(emptyStateKey), findsOneWidget);
     });
 
     testWidgets(
@@ -65,7 +64,7 @@ void main() {
         ),
       );
 
-      expect(find.byKey(Key('error_state_label')), findsOneWidget);
+      expect(find.byKey(errorStateKey), findsOneWidget);
     });
   });
 }

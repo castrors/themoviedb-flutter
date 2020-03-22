@@ -15,8 +15,8 @@ class RequestResponse {
     totalPages = json['total_pages'];
     if (json['results'] != null) {
       results = List<Movie>();
-      json['results'].forEach((v) {
-        results.add(Movie.fromJson(v));
+      json['results'].forEach((movie) {
+        results.add(Movie.fromJson(movie));
       });
     }
   }
@@ -27,7 +27,7 @@ class RequestResponse {
     data['total_results'] = this.totalResults;
     data['total_pages'] = this.totalPages;
     if (this.results != null) {
-      data['results'] = this.results.map((v) => v.toJson()).toList();
+      data['results'] = this.results.map((movie) => movie.toJson()).toList();
     }
     return data;
   }

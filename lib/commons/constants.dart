@@ -34,3 +34,7 @@ List<Genre> genresBy(List<int> genreIds) {
   });
   return result;
 }
+
+
+const emptyStateKey =  Key('empty_state_label');
+const errorStateKey =  Key('error_state_label');

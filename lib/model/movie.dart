@@ -33,4 +33,10 @@ class Movie {
     data['release_date'] = this.releaseDate;
     return data;
   }
+
+  @override
+  String toString() {
+    
+    return title;
+  }
 }
