@@ -1,16 +1,33 @@
 # themoviedb
 
-A new Flutter project.
+A Flutter project that consumes The Movie Database (TMDb) https://developers.themoviedb.org/3
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+![screenrecording](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/screenrecording.gif)
 
-A few resources to get you started if this is your first Flutter project:
+## Running the application
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+`flutter run`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Running tests
+
+`flutter test`
+
+## Third-party libraries used
+
+- Flutter Bloc
+    - Implementation of bloc pattern (business logic component). That receives `events` as inputs, process the data inside the `bloc` and as result return a `state`.
+- Equatable
+    - Helps with objects comparisons
+- Dio
+    - http client to handle with the requests
+- Mockito
+    - Mocking framework for unit tests
+
+## Screenshots
+
+![list|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/list.png)
+![detail|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/detail.png)
+![searchsuccess|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/searchsuccess.png)
+![searcherror|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/searcherror.png)
+![searchdetail|800x600, 20%](https://github.com/castrors/themoviedb-flutter/raw/develop/screenshots/searchdetail.png)
